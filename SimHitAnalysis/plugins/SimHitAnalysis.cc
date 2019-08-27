@@ -53,16 +53,16 @@
 class SimHitAnalysis : public edm::one::EDAnalyzer<edm::one::SharedResources> {
 public:
   explicit SimHitAnalysis(const edm::ParameterSet &);
-  ~SimHitAnalysis();
+  ~SimHitAnalysis() override;
 
   static void fillDescriptions(edm::ConfigurationDescriptions &descriptions);
   void fillSimHitHistos(const edm::ESHandle<TrackerGeometry> &trackerGeometry,
                         const edm::Handle<edm::PSimHitContainer> &psHitHandle);
 
 private:
-  virtual void beginJob() override;
-  virtual void analyze(const edm::Event &, const edm::EventSetup &) override;
-  virtual void endJob() override;
+  void beginJob() override;
+  void analyze(const edm::Event &, const edm::EventSetup &) override;
+  void endJob() override;
 
   // ----------member data ---------------------------
   TH2D *hSimHit_Barrel_XY;
