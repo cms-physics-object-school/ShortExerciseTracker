@@ -25,12 +25,8 @@ process.source = cms.Source("PoolSource",
 from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2018_realistic', '')
 
-process.TFileService = cms.Service("TFileService",
-                                    fileName = cms.string('simHitplots.root')
-)
+process.TFileService = cms.Service("TFileService", fileName = cms.string('simHitplots.root'))
 
 process.load('TrackerDPG.SimHitAnalysis.SimHitAnalyzer_cfi')
-#simhitanalyzer = cms.EDAnalyzer('SimHitAnalysis',
-#)
-                    
-process.p = cms.Path(process.simhitanalyzer)
+
+process.p = cms.Path(process.SimHitAnalyzer)
